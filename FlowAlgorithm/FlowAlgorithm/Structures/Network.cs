@@ -1,32 +1,62 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FlowAlgorithm.Structures
+﻿namespace FlowAlgorithm.Structures
 {
-    internal class Network: Graph
+    internal class Network : Graph
     {
+        private int[,] _capacityMatrix;
+        private int[,] _flowMatrix;
 
-        // iteracja po krawedziach
-
-        public IEnumerator GetEnumerator() // po krawędziach ma być
+        internal Network(int size, Graph graph) : base(size)
         {
-            for (int index = 0; index < 10; index++)
+            _capacityMatrix = new int[_size, _size];
+            _flowMatrix = new int[_size, _size];
+        }
+
+        internal Network(Graph graph) : base(graph.GetSize())
+        {
+            for (int i = 0; i < _size; i++)
             {
-                yield return new NetworkEdge();
+                for (int j = 0; i < _size; j++)
+                    if (graph.HasEdge(i, j))
+                        _adjacencyMatrix[i, j] = true;
+            }
+
+
+            _capacityMatrix = new int[_size, _size];
+            _flowMatrix = new int[_size, _size];
+
+            for (int i = 0; i < _size; i++)
+            {
+                for (int j = 0; j < _size; j++)
+                {
+                    if (_adjacencyMatrix[i, j])
+                        _capacityMatrix[i, j] = 1;
+                }
+            }
+
+        }
+
+        internal override IEnumerator<NetworkEdge> Edges()
+        {
+            for (int i = 0; i < _size; i++)
+            {
+                for (int j = 0; j < _size; j++)
+                    if (_adjacencyMatrix[i, j])
+                        yield return new NetworkEdge(i, j, _capacityMatrix[i, j], _flowMatrix[i, j]);
             }
         }
 
-        // update krawedzi
-
-
-        // sasiedzi
-
-        NetworkEdge Neighbors(int Vertex)
+        internal override IEnumerator<NetworkEdge> Neighbors(int x)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < _size; i++)
+                if (_adjacencyMatrix[x, i])
+                    yield return new NetworkEdge(x, i, _capacityMatrix[x, i], _flowMatrix[x, i]);
+        }
+
+        internal void UpdateFlow(int x, int y, int flow)
+        {
+            if (_adjacencyMatrix[x, y])
+                _flowMatrix[x, y] = flow;
+
         }
     }
 }
