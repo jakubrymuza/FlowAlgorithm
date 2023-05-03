@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FlowAlgorithm.Structures;
+﻿using FlowAlgorithm.Structures;
 
 namespace FlowAlgorithm.Algorithms
 {
@@ -11,7 +6,7 @@ namespace FlowAlgorithm.Algorithms
     {
         public Graph Solve(Graph network, int s, int t)
         {
-            return new Graph();
+            throw new NotImplementedException();
         }
     }
 }

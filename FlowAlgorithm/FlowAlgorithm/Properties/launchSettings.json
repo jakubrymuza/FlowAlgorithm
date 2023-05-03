@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "FlowAlgorithm": {
+      "commandName": "Project",
+      "commandLineArgs": "../../../Tests/test1.txt"
+    }
+  }
+}
