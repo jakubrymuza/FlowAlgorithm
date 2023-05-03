@@ -45,7 +45,7 @@
             }
         }
 
-        internal override IEnumerator<NetworkEdge> Neighbors(int x)
+        internal override IEnumerable<NetworkEdge> Neighbors(int x)
         {
             for (int i = 0; i < _size; i++)
                 if (_adjacencyMatrix[x, i])

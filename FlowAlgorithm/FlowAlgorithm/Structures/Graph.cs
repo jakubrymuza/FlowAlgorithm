@@ -36,7 +36,7 @@
             }
         }
 
-        internal virtual IEnumerator<Edge> Neighbors(int x)
+        internal virtual IEnumerable<Edge> Neighbors(int x)
         {
             for (int i = 0; i < _size; i++)
                 if (_adjacencyMatrix[x, i])
@@ -49,7 +49,5 @@
             _size = size;
             _adjacencyMatrix = new bool[_size, _size];
         }
-
-
     }
 }
