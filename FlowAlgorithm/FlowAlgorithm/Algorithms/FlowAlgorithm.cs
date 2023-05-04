@@ -7,7 +7,7 @@ namespace FlowAlgorithm.Algorithms
         public static int Solve(Network network, int s, int t)
         {
             int flow = 0;
-            Queue <int> q = new Queue<int>();
+            Queue <int> q = new();
             NetworkEdge[] prevTable;
             do {
                 prevTable = new NetworkEdge[network.GetSize()];
@@ -28,7 +28,7 @@ namespace FlowAlgorithm.Algorithms
                 }
                 if (prevTable[t] != null)
                 {
-                    LinkedList<NetworkEdge> path = new LinkedList<NetworkEdge>();
+                    LinkedList<NetworkEdge> path = new();
                     int df = int.MaxValue;
 
                     NetworkEdge currEdge = prevTable[t];
