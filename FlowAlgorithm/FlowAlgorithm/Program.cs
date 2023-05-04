@@ -5,20 +5,29 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        if(args.Length==1)
+        string workingDirectory = Environment.CurrentDirectory;
+        string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
+
+        StreamWriter writer = new StreamWriter(projectDirectory + @"\output.txt");
+
+        if (args.Length==1)
         {
             var path = args[0];
 
             var graph = new Graph(path);
 
-            var algorithm = new ConnectivityAlgorithm();
+            var result = ConnectivityAlgorithm.Solve(graph);
 
-            Console.WriteLine($"Spójność krawędziowa podanego grafu wynosi {ConnectivityAlgorithm.Solve(graph)}.");
+            Console.WriteLine($"Spójność krawędziowa podanego grafu wynosi {result}.");
+            writer.WriteLine(result);
+            writer.Flush();
+
+            Console.WriteLine("Enter any key to continue");
+            
         }
         else
         {
-            string workingDirectory = Environment.CurrentDirectory;
-            string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
+            
 
             DirectoryInfo d = new DirectoryInfo(projectDirectory);
 
@@ -29,7 +38,12 @@ public class Program
             {
                 var graph = new Graph(path);
 
-                Console.WriteLine($"Spójność krawędziowa grafu {Path.GetFileName(path)} wynosi {ConnectivityAlgorithm.Solve(graph)}.");
+                var result = ConnectivityAlgorithm.Solve(graph);
+
+                Console.WriteLine($"Spójność krawędziowa grafu {Path.GetFileName(path)} wynosi {result}.");
+
+                writer.WriteLine(result);
+                writer.Flush();
             }
         }
         
