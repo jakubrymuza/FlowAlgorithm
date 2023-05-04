@@ -15,9 +15,12 @@
         {
             for (int i = 0; i < _size; i++)
             {
-                for (int j = 0; i < _size; j++)
+                for (int j = 0; j < _size; j++)
                     if (graph.HasEdge(i, j))
+                    {
                         _adjacencyMatrix[i, j] = true;
+                        _adjacencyMatrix[j, i] = true;
+                    }
             }
 
 

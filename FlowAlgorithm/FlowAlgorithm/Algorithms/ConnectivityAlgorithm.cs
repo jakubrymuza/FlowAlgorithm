@@ -6,7 +6,7 @@ namespace FlowAlgorithm.Algorithms
     {
         public int Solve(Graph G)
         {
-            int MinMaxFlow = 0;
+            int MinMaxFlow = int.MaxValue;
             int s = 0;
             int MaxFlow;
             Network network;
