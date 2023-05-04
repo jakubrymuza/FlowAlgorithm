@@ -11,6 +11,11 @@ public class Program
 
         var algorithm = new ConnectivityAlgorithm();
 
-        Console.WriteLine($"Spójność krawędziowa podanego grafu wynosi {algorithm.Solve(graph)}.");
+        var result = algorithm.Solve(graph);
+
+        StreamWriter writer = new StreamWriter("output.txt");
+
+        Console.WriteLine($"Spójność krawędziowa podanego grafu wynosi {result}.");
+        writer.WriteLine(result);
     }
 }
