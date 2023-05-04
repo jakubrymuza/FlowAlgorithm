@@ -5,6 +5,7 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        args = new string[0];
         string workingDirectory = Environment.CurrentDirectory;
         string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
 
@@ -42,7 +43,7 @@ public class Program
 
                 Console.WriteLine($"Spójność krawędziowa grafu {Path.GetFileName(path)} wynosi {result}.");
 
-                writer.WriteLine(result);
+                writer.WriteLine(Path.GetFileName(path)+ ": " + result);
                 writer.Flush();
             }
         }
