@@ -17,5 +17,8 @@ public class Program
 
         Console.WriteLine($"Spójność krawędziowa podanego grafu wynosi {result}.");
         writer.WriteLine(result);
+        writer.Flush();
+
+        Console.WriteLine("Enter any key to continue");
     }
 }
