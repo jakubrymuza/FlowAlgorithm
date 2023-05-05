@@ -18,7 +18,7 @@ public class Program
             writer.Flush();
         }
 
-        Console.WriteLine("Enter any key to continue");
+        Console.WriteLine("Enter enter to continue");
         Console.ReadLine();
 
     }
