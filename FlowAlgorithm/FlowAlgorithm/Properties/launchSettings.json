@@ -2,7 +2,7 @@
   "profiles": {
     "FlowAlgorithm": {
       "commandName": "Project",
-      "commandLineArgs": "../../../Tests/test1.txt"
+      "commandLineArgs": "../../../Tests/test0.txt ../../../Tests/test1.txt ../../../Tests/test2.txt ../../../Tests/test3.txt ../../../Tests/test4.txt"
     }
   }
 }

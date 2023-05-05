@@ -7,9 +7,10 @@ namespace FlowAlgorithm.Algorithms
         public static int Solve(Network network, int s, int t)
         {
             int flow = 0;
-            Queue <int> q = new();
+            Queue<int> q = new();
             NetworkEdge[] prevTable;
-            do {
+            do
+            {
                 prevTable = new NetworkEdge[network.GetSize()];
                 q.Clear();
                 q.Enqueue(s);

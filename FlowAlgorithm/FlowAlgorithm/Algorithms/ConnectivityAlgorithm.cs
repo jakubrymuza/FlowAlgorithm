@@ -11,10 +11,10 @@ namespace FlowAlgorithm.Algorithms
 
             if (G.GetSize() <= 1) return 0;
 
-            for(int t=1;t<G.GetSize();t++)
+            for (int t = 1; t < G.GetSize(); t++)
             {
                 network = new Network(G);
-                MaxFlow = FlowAlgorithm.Solve(network,s,t);
+                MaxFlow = FlowAlgorithm.Solve(network, s, t);
                 MinMaxFlow = Math.Min(MaxFlow, MinMaxFlow);
             }
             return MinMaxFlow;
