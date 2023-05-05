@@ -5,7 +5,6 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        args = new string[0];
         string workingDirectory = Environment.CurrentDirectory;
         string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
 
