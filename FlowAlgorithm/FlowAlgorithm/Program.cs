@@ -5,30 +5,27 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        string workingDirectory = Environment.CurrentDirectory;
-        string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
+        string workingDirectory = Environment.CurrentDirectory;       
 
-        StreamWriter writer = new StreamWriter(projectDirectory + @"\output.txt");
+        
 
         if (args.Length==1)
         {
+            StreamWriter writer = new StreamWriter(workingDirectory + @"\output.txt");
             var path = args[0];
 
             var graph = new Graph(path);
 
             var result = ConnectivityAlgorithm.Solve(graph);
 
-            Console.WriteLine($"Spójność krawędziowa podanego grafu wynosi {result}.");
+            Console.WriteLine($"Spojnosc krawedziowa podanego grafu wynosi {result}.");
             writer.WriteLine(result);
-            writer.Flush();
-
-            Console.WriteLine("Enter any key to continue");
-            
+            writer.Flush();            
         }
         else
         {
-            
-
+            string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
+            StreamWriter writer = new StreamWriter(projectDirectory + @"\output.txt");
             DirectoryInfo d = new DirectoryInfo(projectDirectory);
 
 
@@ -46,6 +43,7 @@ public class Program
                 writer.Flush();
             }
         }
+        Console.ReadKey();
         
     }
 }
