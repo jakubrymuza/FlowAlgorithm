@@ -55,7 +55,7 @@ namespace TestsGenerator
 
             var edges = GenerateRandom(VerticesCount, Sparse, index);
 
-            WriteOutput(VerticesCount, edges, $"{path}{fileName}{VerticesCount}.txt");
+            WriteOutput(VerticesCount, edges, $"{path}{fileName}{VerticesCount}-{index}.txt");
         }
 
         private static int GetIndex(string path, string fileName)
