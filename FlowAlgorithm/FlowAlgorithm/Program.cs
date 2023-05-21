@@ -1,25 +1,27 @@
 ﻿using FlowAlgorithm.Algorithms;
 using FlowAlgorithm.Structures;
-
-public class Program
+namespace FlowAlgorithm
 {
-    public static void Main(string[] args)
+    public class Program
     {
-        StreamWriter writer = new StreamWriter("./output.txt");
-
-        foreach (var path in args)
+        public static void Main(string[] args)
         {
-            var graph = new Graph(path);
+            StreamWriter writer = new("./output.txt");
 
-            var result = ConnectivityAlgorithm.Solve(graph);
+            foreach (var path in args)
+            {
+                var graph = new Graph(path);
 
-            Console.WriteLine($"Spójność krawędziowa grafu {path} wynosi {result}.");
-            writer.WriteLine($"Spójność krawędziowa grafu {path} wynosi {result}.");
-            writer.Flush();
+                var result = ConnectivityAlgorithm.Solve(graph);
+
+                Console.WriteLine($"Spójność krawędziowa grafu {path} wynosi {result}.");
+                writer.WriteLine($"Spójność krawędziowa grafu {path} wynosi {result}.");
+                writer.Flush();
+            }
+
+            Console.WriteLine("Enter enter to continue");
+            Console.ReadLine();
+
         }
-
-        Console.WriteLine("Enter enter to continue");
-        Console.ReadLine();
-
     }
 }

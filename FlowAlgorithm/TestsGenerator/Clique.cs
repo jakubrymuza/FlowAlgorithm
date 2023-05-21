@@ -10,25 +10,26 @@ namespace TestsGenerator
 {
     internal class Clique
     {
-        public static void GenerateClique(List<int> VerticlesCounts, string path)
+        private static readonly string fileName = "clique-";
+        public static void GenerateCliques(List<int> VerticesCounts, string path)
         {
-            for(int i = 0; i < VerticlesCounts.Count; i++) 
+            
+            for(int i = 0; i < VerticesCounts.Count; i++) 
             {
-                GenerateClique(VerticlesCounts[i], path, i);
+                GenerateClique(VerticesCounts[i], path);
             }
         }
-        private static void GenerateClique(int VerticlesCount, string path,int index)
+        public static void GenerateClique(int VerticesCount, string path)
         {
-            using (StreamWriter writer =new($"{path}test{index}.txt"))
-            {
-                writer.WriteLine(VerticlesCount.ToString());
 
-                for(int i=1;i<= VerticlesCount;i++)
+            using StreamWriter writer = new($"{path}{fileName}{VerticesCount}.txt");
+            writer.WriteLine(VerticesCount.ToString());
+
+            for (int i = 1; i <= VerticesCount; i++)
+            {
+                for (int j = i + 1; j <= VerticesCount; j++)
                 {
-                    for(int j=i+1;j<= VerticlesCount;j++)
-                    {
-                        writer.WriteLine($"{i} {j}");
-                    }
+                    writer.WriteLine($"{i} {j}");
                 }
             }
         }
