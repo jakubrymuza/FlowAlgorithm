@@ -6,13 +6,23 @@ namespace TestsGenerator
     {
         public static void Main(string[] args)
         {
-            string RSpath = "C:\\Users\\rafci\\Desktop\\FlowAlgorithm\\FlowAlgorithm\\FlowAlgorithm\\Tests\\Cliques\\";
+            string path = @".\..\..\..\..\FlowAlgorithm\Tests\";
+            var x = Directory.GetParent(path);
+                   
             if (args.Length == 0)
             {
 
-                Clique.GenerateCliques(new() { 1, 2, 3, 4, 5, 6 }, RSpath);
+                Clique.GenerateCliques(new() { 1, 2, 3, 4, 5, 6 }, path+@"Cliques\");
 
-                Clique.GenerateClique(7, RSpath);
+                Clique.GenerateClique(7, path + @"Cliques\");
+
+                RandomGraph.GenerateDenseRandoms(new() { 1, 2, 3, 4, 5, 6 }, path + @"Dense\");
+
+                RandomGraph.GenerateDenseRandom(7, path + @"Dense\");
+
+                RandomGraph.GenerateSparseRandoms(new() { 1, 2, 3, 4, 5, 6 }, path + @"Sparse\");
+
+                RandomGraph.GenerateSparseRandom(7, path + @"Sparse\");
             }
             else
             {
@@ -20,7 +30,7 @@ namespace TestsGenerator
                 {
                     if (args[i] == "c" && i + 1 < args.Length && int.TryParse(args[i + 1], out _))
                     {
-                        Clique.GenerateClique(int.Parse(args[i + 1]), "");
+                        Clique.GenerateClique(int.Parse(args[i + 1]), @"Tests\Cliques\");
                     }
                 }
             }

@@ -21,7 +21,10 @@ namespace TestsGenerator
         }
         public static void GenerateClique(int VerticesCount, string path)
         {
-
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
             using StreamWriter writer = new($"{path}{fileName}{VerticesCount}.txt");
             writer.WriteLine(VerticesCount.ToString());
 
