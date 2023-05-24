@@ -26,11 +26,25 @@ namespace TestsGenerator
             }
             else
             {
+                int vartexCount;
                 for (int i = 0; i < args.Length; i += 2)
                 {
-                    if (args[i] == "c" && i + 1 < args.Length && int.TryParse(args[i + 1], out _))
+                    if (args[i] == "c" && i + 1 < args.Length && int.TryParse(args[i + 1], out vartexCount))
                     {
-                        Clique.GenerateClique(int.Parse(args[i + 1]), @"Tests\Cliques\");
+                        switch (args[i])
+                        {
+                            case "c":
+                                Clique.GenerateClique(vartexCount, @"Tests\Cliques\");
+                                break;
+                            case "d":
+                                RandomGraph.GenerateDenseRandom(vartexCount, path + @"Dense\");
+                                break;
+                            case "s":
+                                RandomGraph.GenerateSparseRandom(vartexCount, path + @"Sparse\");
+                                break;
+                            default:
+                                break;
+                        }
                     }
                 }
             }

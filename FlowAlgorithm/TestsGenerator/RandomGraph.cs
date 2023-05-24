@@ -13,8 +13,8 @@ namespace TestsGenerator
     {
         private static readonly string randomFileName = "random-";
 
-        static Func<int, int>   Dense = x => (int)(0.25 * x * x), 
-                                Sparse = x => 4 * x;
+        static Func<int, int>   Dense = x => (int)(0.5 * x * x), 
+                                Sparse = x => x;
 
         public static void GenerateDenseRandoms(List<int> VerticesCounts, string path)
         {
@@ -37,12 +37,12 @@ namespace TestsGenerator
         {
             string fileName = randomFileName + "D-";
 
-            int index = GetIndex(path, fileName);
+            int index = GetIndex(path, $"{fileName}{VerticesCount}-");
 
 
             var edges = GenerateRandom(VerticesCount, Dense, index);
 
-            WriteOutput(VerticesCount, edges, $"{path}{fileName}{VerticesCount}.txt");
+            WriteOutput(VerticesCount, edges, $"{path}{fileName}{VerticesCount}-{index}.txt");
         }
 
 
@@ -50,7 +50,7 @@ namespace TestsGenerator
         {
             string fileName = randomFileName + "S-";
 
-            int index = GetIndex(path, fileName);
+            int index = GetIndex(path, $"{fileName}{VerticesCount}-");
 
 
             var edges = GenerateRandom(VerticesCount, Sparse, index);
@@ -71,7 +71,9 @@ namespace TestsGenerator
                 if (Path.GetFileName(p).StartsWith(fileName))
                 {
                     int currIndex;
-                    if (int.TryParse(Path.GetFileName(p).Substring(fileName.Length), out currIndex))
+                    string fName = Path.GetFileName(p);
+                    fName=fName.Substring(0,fName.Length-4);
+                    if (int.TryParse(fName.Substring(fileName.Length), out currIndex))
                     {
                         index = index < currIndex ? currIndex : index;
                     }
