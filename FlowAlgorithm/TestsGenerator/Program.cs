@@ -29,7 +29,7 @@ namespace TestsGenerator
                 int vartexCount;
                 for (int i = 0; i < args.Length; i += 2)
                 {
-                    if (args[i] == "c" && i + 1 < args.Length && int.TryParse(args[i + 1], out vartexCount))
+                    if (i + 1 < args.Length && int.TryParse(args[i + 1], out vartexCount))
                     {
                         switch (args[i])
                         {
