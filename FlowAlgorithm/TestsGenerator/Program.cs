@@ -1,5 +1,4 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using TestsGenerator;
 namespace TestsGenerator
 {
     public class Program
@@ -7,12 +6,11 @@ namespace TestsGenerator
         public static void Main(string[] args)
         {
             string path = @".\..\..\..\..\FlowAlgorithm\Tests\";
-            var x = Directory.GetParent(path);
-                   
+
             if (args.Length == 0)
             {
 
-                Clique.GenerateCliques(new() { 1, 2, 3, 4, 5, 6 }, path+@"Cliques\");
+                Clique.GenerateCliques(new() { 1, 2, 3, 4, 5, 6 }, path + @"Cliques\");
 
                 Clique.GenerateClique(7, path + @"Cliques\");
 
@@ -26,10 +24,9 @@ namespace TestsGenerator
             }
             else
             {
-                int vartexCount;
                 for (int i = 0; i < args.Length; i += 2)
                 {
-                    if (i + 1 < args.Length && int.TryParse(args[i + 1], out vartexCount))
+                    if (i + 1 < args.Length && int.TryParse(args[i + 1], out int vertexCount))
                     {
                         switch (args[i])
                         {
@@ -37,10 +34,10 @@ namespace TestsGenerator
                                 Clique.GenerateClique(vartexCount, path + @"Cliques\");
                                 break;
                             case "d":
-                                RandomGraph.GenerateDenseRandom(vartexCount, path + @"Dense\");
+                                RandomGraph.GenerateDenseRandom(vertexCount, path + @"Dense\");
                                 break;
                             case "s":
-                                RandomGraph.GenerateSparseRandom(vartexCount, path + @"Sparse\");
+                                RandomGraph.GenerateSparseRandom(vertexCount, path + @"Sparse\");
                                 break;
                             default:
                                 break;

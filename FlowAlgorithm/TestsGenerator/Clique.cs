@@ -1,20 +1,12 @@
-﻿using System;
-using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TestsGenerator
+﻿namespace TestsGenerator
 {
     internal class Clique
     {
         private static readonly string fileName = "clique-";
         public static void GenerateCliques(List<int> VerticesCounts, string path)
         {
-            
-            for(int i = 0; i < VerticesCounts.Count; i++) 
+
+            for (int i = 0; i < VerticesCounts.Count; i++)
             {
                 GenerateClique(VerticesCounts[i], path);
             }

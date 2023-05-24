@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TestsGenerator": {
+      "commandName": "Project",
+      "commandLineArgs": "c 30 d 30 s 30"
+    }
+  }
+}

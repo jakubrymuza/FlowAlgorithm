@@ -1,20 +1,10 @@
-﻿using System;
-using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TestsGenerator
+﻿namespace TestsGenerator
 {
     internal class RandomGraph
     {
         private static readonly string randomFileName = "random-";
-
-        static Func<int, int>   Dense = x => (int)(0.5 * x * x), 
-                                Sparse = x => x;
+        private static readonly Func<int, int> Dense = x => (int)(0.5 * x * x);
+        private static readonly Func<int, int> Sparse = x => x;
 
         public static void GenerateDenseRandoms(List<int> VerticesCounts, string path)
         {
@@ -70,22 +60,21 @@ namespace TestsGenerator
             {
                 if (Path.GetFileName(p).StartsWith(fileName))
                 {
-                    int currIndex;
                     string fName = Path.GetFileName(p);
-                    fName=fName.Substring(0,fName.Length-4);
-                    if (int.TryParse(fName.Substring(fileName.Length), out currIndex))
+                    fName = fName[..^4];
+                    if (int.TryParse(fName.AsSpan(fileName.Length), out int currIndex))
                     {
                         index = index < currIndex ? currIndex : index;
                     }
 
                 }
             }
-            
+
             index++;
             return index;
         }
 
-        private static void WriteOutput(int VerticesCount,List<Edge> edges,string path)
+        private static void WriteOutput(int VerticesCount, List<Edge> edges, string path)
         {
             using StreamWriter writer = new(path);
             writer.WriteLine(VerticesCount.ToString());
@@ -114,14 +103,14 @@ namespace TestsGenerator
         }
         public static List<Edge> GenerateRandom(int VerticesCount, Func<int, int> EdgeRes, int index)
         {
-            Random random = new Random(VerticesCount * index);
-            List<Edge> resultEdges = new List<Edge>();
+            Random random = new(VerticesCount * index);
+            List<Edge> resultEdges = new();
             int Edges = EdgeRes(VerticesCount);
 
-            List<Edge> edges = Enumerable.Range(0, VerticesCount * VerticesCount).Select(x=>new Edge(1+x/VerticesCount,1+x%VerticesCount)).Where(e=>e._x<e._y).ToList();
+            List<Edge> edges = Enumerable.Range(0, VerticesCount * VerticesCount).Select(x => new Edge(1 + x / VerticesCount, 1 + x % VerticesCount)).Where(e => e._x < e._y).ToList();
 
 
-            while (edges.Count!=0 && resultEdges.Count < Edges)
+            while (edges.Count != 0 && resultEdges.Count < Edges)
             {
                 int i = random.Next(edges.Count);
 
@@ -129,7 +118,7 @@ namespace TestsGenerator
 
                 edges.RemoveAt(i);
 
-                resultEdges.Add(edge);                
+                resultEdges.Add(edge);
             }
             resultEdges.Sort((e1, e2) =>
             {
