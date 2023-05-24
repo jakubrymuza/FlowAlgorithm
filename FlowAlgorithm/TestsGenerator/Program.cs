@@ -31,7 +31,7 @@ namespace TestsGenerator
                         switch (args[i])
                         {
                             case "c":
-                                Clique.GenerateClique(vartexCount, path + @"Cliques\");
+                                Clique.GenerateClique(vertexCount, path + @"Cliques\");
                                 break;
                             case "d":
                                 RandomGraph.GenerateDenseRandom(vertexCount, path + @"Dense\");
