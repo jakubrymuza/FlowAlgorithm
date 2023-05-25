@@ -3,8 +3,8 @@
     internal class RandomGraph
     {
         private static readonly string randomFileName = "random-";
-        private static readonly Func<int, int> Dense = x => (int)(0.5 * x * x);
-        private static readonly Func<int, int> Sparse = x => x;
+        private static readonly Func<int, int> Dense = x => (int)(0.25 * x * x);
+        private static readonly Func<int, int> Sparse = x => 3 * x;
 
         public static void GenerateDenseRandoms(List<int> VerticesCounts, string path)
         {
