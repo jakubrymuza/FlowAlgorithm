@@ -5,7 +5,7 @@ namespace TestsGenerator
     {
         public static void Main(string[] args)
         {
-            string path = @".\..\..\..\..\FlowAlgorithm\Tests\";
+            string path = @".\";
 
             if (args.Length == 0)
             {
