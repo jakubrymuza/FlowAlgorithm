@@ -7,8 +7,7 @@
 
         internal Graph(string path)
         {
-            string fileText = File.ReadAllText(path);
-            string[] lines = fileText.Split('\n');
+            var lines = File.ReadAllLines(path);
 
             _size = int.Parse(lines[0]);
 
