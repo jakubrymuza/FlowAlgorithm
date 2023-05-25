@@ -4,7 +4,7 @@
     {
         private static readonly string randomFileName = "random-";
         private static readonly Func<int, int> Dense = x => (int)(0.25 * x * x);
-        private static readonly Func<int, int> Sparse = x => 3 * x;
+        private static readonly Func<int, int> Sparse = x => 7 * x;
 
         public static void GenerateDenseRandoms(List<int> VerticesCounts, string path)
         {
