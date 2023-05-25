@@ -19,7 +19,7 @@ namespace FlowAlgorithm
                 var result = ConnectivityAlgorithm.Solve(graph);
                 stopwatch.Stop();
 
-                double time = stopwatch.ElapsedMilliseconds / 1000;
+                double time = (double)stopwatch.ElapsedMilliseconds / 1000;
 
                 lock (writer)
                 {
