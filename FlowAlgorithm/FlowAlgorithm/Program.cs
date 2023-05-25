@@ -10,7 +10,7 @@ namespace FlowAlgorithm
         {
             StreamWriter writer = new("./output.txt");
 
-            Parallel.ForEach(args, path =>
+            foreach(var path in args)
             {
                 var graph = new Graph(path);
 
@@ -26,7 +26,7 @@ namespace FlowAlgorithm
                     Console.WriteLine($"Spójność krawędziowa grafu {path} wynosi {result}. Czas obliczeń: {time}s.");
                     writer.WriteLine($"Spójność krawędziowa grafu {path} wynosi {result}. Czas obliczeń: {time}s.");
                 }   
-            });
+            }
 
             writer.Flush();
             Console.WriteLine("Enter enter to continue");
