@@ -14,7 +14,7 @@ namespace FlowAlgorithm
             {
                 var graph = new Graph(path);
 
-                Stopwatch stopwatch = new Stopwatch();
+                Stopwatch stopwatch = new();
                 stopwatch.Start();
                 var result = ConnectivityAlgorithm.Solve(graph);
                 stopwatch.Stop();
