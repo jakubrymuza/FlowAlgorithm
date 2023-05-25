@@ -23,8 +23,8 @@ namespace FlowAlgorithm
 
                 lock (writer)
                 {
-                    Console.WriteLine($"Spójność krawędziowa grafu {path} wynosi {result}. Czas obliczeń: ${time}s.");
-                    writer.WriteLine($"Spójność krawędziowa grafu {path} wynosi {result}. Czas obliczeń: ${time}s.");
+                    Console.WriteLine($"Spójność krawędziowa grafu {path} wynosi {result}. Czas obliczeń: {time}s.");
+                    writer.WriteLine($"Spójność krawędziowa grafu {path} wynosi {result}. Czas obliczeń: {time}s.");
                 }   
             });
 
